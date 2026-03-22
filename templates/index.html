@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Translator</title>
+    <link href="https://fontaas.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="glass-container">
+        <header>
+            <h1>Sign Language Translator</h1>
+            <p>Real-time Hand Gesture Recognition</p>
+        </header>
+
+        <main class="content-grid">
+            <!-- Left Side: Input -->
+            <section class="camera-section card">
+                <div class="video-container">
+                    <video id="videoElement" autoplay playsinline></video>
+                    <img id="uploadedImage" style="display: none;" alt="Uploaded gesture">
+                    <canvas id="canvasElement" style="display: none;"></canvas>
+                    <div class="status-overlay" id="statusOverlay">
+                        <span class="pulse"></span> Camera Started
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="toggleCamBtn" class="btn primary-btn">Start Camera</button>
+                    <label for="imageUpload" class="btn secondary-btn upload-btn">
+                        <span>Upload Image</span>
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                    </label>
+                </div>
+            </section>
+
+            <!-- Right Side: Output -->
+            <section class="result-section card">
+                <h2>Translation</h2>
+                <div class="result-display">
+                    <span id="predictedText">Waiting for gesture...</span>
+                </div>
+                <div class="controls">
+                    <button id="speakBtn" class="btn secondary-btn" disabled>
+                        🔊 Speak Text
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
